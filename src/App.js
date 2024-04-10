@@ -1,23 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import {useState } from 'react';
+import { DisplayToggle } from './components/DisplayToggle';
+import { AddInput } from './components/AddInput';
 
 function App() {
+
+  const [task,setTask]=useState(1)
+ 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Assigned Tasks</h1>
+      <div className='taskDiv'>
+        <h3 className='taskDivItem' onClick={()=>setTask(1)}>Task 1</h3>
+        <h3 className='taskDivItem' onClick={()=>setTask(2)}>Task 2</h3>
+      </div>
+      {task===1 && <DisplayToggle/>}
+      {task===2 && <AddInput/>}
     </div>
   );
 }
